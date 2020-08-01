@@ -26,6 +26,10 @@ public class Player_Movement : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
+        // Let gravity take over if there is no input
+        if (hAxis == 0.0f && vAxis == 0.0f)
+            return;
+
         // Determine the new velocity vector
         float xSpeed = hAxis * m_movementSpeed;
         float zSpeed = vAxis * m_movementSpeed;
