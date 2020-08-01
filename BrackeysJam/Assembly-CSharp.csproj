@@ -59,6 +59,7 @@
     <Compile Include="Assets\Studio Assets\Scripts\Camera_FreeLookController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Respawn_Zone.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_Respawner.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Player_SizeController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />

@@ -4,10 +4,18 @@ public class Player_Respawner : MonoBehaviour
 {
     //--- Private Variables ---//
     private Respawn_Zone m_currentRespawnZone;
+    private Player_SizeController m_sizeController;
 
 
 
     //--- Unity Methods ---//
+    private void Awake()
+    {
+        // Init the private variables
+        m_currentRespawnZone = null;
+        m_sizeController = GetComponent<Player_SizeController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // When colliding with a new respawn point, we should keep track of it
@@ -17,6 +25,7 @@ public class Player_Respawner : MonoBehaviour
 
     private void Update()
     {
+        // Can quickly respawn by pressing the appropriate key
         if (Input.GetKeyDown(KeyCode.R))
             this.Respawn();
     }
@@ -34,10 +43,11 @@ public class Player_Respawner : MonoBehaviour
         }
 
         // Move to the respawn point's position and orientation
-        this.transform.position = m_currentRespawnZone.m_respawnPoint.position;
-        this.transform.rotation = m_currentRespawnZone.m_respawnPoint.rotation;
+        transform.position = m_currentRespawnZone.m_respawnPoint.position;
+        transform.rotation = m_currentRespawnZone.m_respawnPoint.rotation;
 
-        // TODO: Reset the size of the ball
+        // Reset the player size
+        m_sizeController.ResetSize();
     }
 
 

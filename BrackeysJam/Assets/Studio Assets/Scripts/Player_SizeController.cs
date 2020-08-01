@@ -1,0 +1,64 @@
+﻿using UnityEngine;
+
+public class Player_SizeController : MonoBehaviour
+{
+    //--- Public Variables ---//
+    public float m_sizeChangeMaxDuration;
+    public float m_minSize;
+
+
+
+    //--- Private Variables ---//
+    private Player_Respawner m_respawner;
+    private float m_maxSize;
+    private float m_sizeChangeTimeSoFar;
+
+
+
+    //--- Unity Methods ---//
+    private void Awake()
+    {
+        // Init the private variables
+        m_respawner = GetComponent<Player_Respawner>();
+        m_maxSize = transform.localScale.x;
+        m_sizeChangeTimeSoFar = 0.0f;
+    }
+
+    private void Update()
+    {
+        // Reduce the size over time
+        ReduceSize();
+    }
+
+
+
+    //--- Methods ---//
+    public void ResetSize()
+    {
+        // Reset the scaling
+        m_sizeChangeTimeSoFar = 0.0f;
+        transform.localScale = Vector3.one * m_maxSize;
+    }
+
+    public void ReduceSize()
+    {
+        // Increase the timer
+        m_sizeChangeTimeSoFar += Time.deltaTime;
+
+        // If the time is up, we should respawn
+        // Otherwise, we should adjust the scale instead
+        if (m_sizeChangeTimeSoFar >= m_sizeChangeMaxDuration)
+        {
+            m_respawner.Respawn();
+        }
+        else
+        {
+            // Calculate the new size
+            float sizeChangeT = m_sizeChangeTimeSoFar / m_sizeChangeMaxDuration;
+            float newSize = Mathf.Lerp(m_maxSize, m_minSize, sizeChangeT);
+
+            // Apply the size to the transform
+            transform.localScale = Vector3.one * newSize;
+        }
+    }
+}
