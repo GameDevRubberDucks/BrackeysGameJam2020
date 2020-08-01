@@ -60,6 +60,7 @@
     <Compile Include="Assets\Studio Assets\Scripts\Respawn_Zone.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_Respawner.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_SizeController.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\UI_PlayerSize.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />

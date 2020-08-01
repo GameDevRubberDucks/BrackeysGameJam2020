@@ -26,10 +26,6 @@ public class Player_Movement : MonoBehaviour
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
-        // Let gravity take over if there is no input
-        if (hAxis == 0.0f && vAxis == 0.0f)
-            return;
-
         // Determine the new velocity vector
         float xSpeed = hAxis * m_movementSpeed;
         float zSpeed = vAxis * m_movementSpeed;
@@ -37,7 +33,9 @@ public class Player_Movement : MonoBehaviour
 
         // Transform the velocity so it is relative to the camera
         Vector3 transformedVel = m_mainCam.transform.TransformDirection(newVel);
-        transformedVel.y = 0.0f;
+
+        // Use the pre-existing y-velocity to ensure that gravity is still applied
+        transformedVel.y = m_rb.velocity.y;
 
         // Move the ball
         m_rb.velocity = transformedVel;
