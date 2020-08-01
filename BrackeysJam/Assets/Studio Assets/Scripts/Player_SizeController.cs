@@ -15,6 +15,7 @@ public class Player_SizeController : MonoBehaviour
     private float m_maxSize;
     private float m_sizeChangeTimeSoFar;
     private float m_percentOfMaxSize;
+    private float m_currentSize;
 
 
 
@@ -26,6 +27,7 @@ public class Player_SizeController : MonoBehaviour
         m_maxSize = transform.localScale.x;
         m_sizeChangeTimeSoFar = 0.0f;
         PercentOfMaxSize = 1.0f;
+        m_currentSize = m_maxSize;
     }
 
     private void Update()
@@ -42,6 +44,8 @@ public class Player_SizeController : MonoBehaviour
         // Reset the scaling
         m_sizeChangeTimeSoFar = 0.0f;
         transform.localScale = Vector3.one * m_maxSize;
+        m_currentSize = m_maxSize;
+        PercentOfMaxSize = 1.0f;
     }
 
     public void ReduceSize()
@@ -59,10 +63,10 @@ public class Player_SizeController : MonoBehaviour
         {
             // Calculate the new size
             float sizeChangeT = m_sizeChangeTimeSoFar / m_sizeChangeMaxDuration;
-            float newSize = Mathf.Lerp(m_maxSize, m_minSize, sizeChangeT);
+            m_currentSize = Mathf.Lerp(m_maxSize, m_minSize, sizeChangeT);
 
             // Apply the size to the transform
-            transform.localScale = Vector3.one * newSize;
+            transform.localScale = Vector3.one * m_currentSize;
 
             // Recalculate the percentage of the maximum size
             PercentOfMaxSize = 1.0f - sizeChangeT;
@@ -91,5 +95,13 @@ public class Player_SizeController : MonoBehaviour
             m_percentOfMaxSize = value;
             OnSizeUpdated.Invoke(m_percentOfMaxSize);
         }
+    }
+
+
+
+    //--- Getters ---//
+    public float GetCurrentSize()
+    {
+        return m_currentSize;
     }
 }
