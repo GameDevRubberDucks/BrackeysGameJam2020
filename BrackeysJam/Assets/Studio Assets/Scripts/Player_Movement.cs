@@ -9,7 +9,6 @@ public class Player_Movement : MonoBehaviour
 
 
     //--- Private Variables ---//
-    private Player_SizeController m_sizeController;
     private Rigidbody m_rb;
 
 
@@ -18,7 +17,6 @@ public class Player_Movement : MonoBehaviour
     private void Awake()
     {
         // Init the private variables
-        m_sizeController = GetComponent<Player_SizeController>();
         m_rb = GetComponent<Rigidbody>();
     }
 
@@ -53,8 +51,5 @@ public class Player_Movement : MonoBehaviour
 
         // Move the ball
         m_rb.velocity = transformedVel;
-
-        // Since we are moving the ball, it should shrink in size
-        m_sizeController.ReduceSize(Time.deltaTime);
     }
 }

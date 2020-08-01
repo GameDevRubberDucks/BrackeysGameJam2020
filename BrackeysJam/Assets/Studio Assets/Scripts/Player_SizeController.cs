@@ -28,6 +28,12 @@ public class Player_SizeController : MonoBehaviour
         PercentOfMaxSize = 1.0f;
     }
 
+    private void Update()
+    {
+        // Shrink over time
+        ReduceSize(Time.deltaTime);
+    }
+
 
 
     //--- Methods ---//
