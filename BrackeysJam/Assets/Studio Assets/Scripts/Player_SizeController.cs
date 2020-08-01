@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class Player_SizeController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Player_SizeController : MonoBehaviour
 
 
     //--- Private Variables ---//
+    private UnityEvent<float> m_onSizeUpdated;
     private Player_Respawner m_respawner;
     private float m_maxSize;
     private float m_sizeChangeTimeSoFar;
@@ -59,6 +61,24 @@ public class Player_SizeController : MonoBehaviour
 
             // Apply the size to the transform
             transform.localScale = Vector3.one * newSize;
+
+            // Trigger the event
+            float percentOfMaxSize = 1.0f - sizeChangeT;
+            OnSizeUpdated.Invoke(percentOfMaxSize);
+        }
+    }
+
+
+
+    //--- Properties ---//
+    public UnityEvent<float> OnSizeUpdated 
+    {
+        get
+        {
+            if (m_onSizeUpdated == null)
+                m_onSizeUpdated = new UnityEvent<float>();
+
+            return m_onSizeUpdated;
         }
     }
 }
