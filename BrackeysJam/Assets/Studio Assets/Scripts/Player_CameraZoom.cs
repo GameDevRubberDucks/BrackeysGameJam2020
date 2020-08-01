@@ -41,10 +41,13 @@ public class Player_CameraZoom : MonoBehaviour
     //--- Methods ---//
     public void UpdateZoom(float _sizePercentage)
     {
-        // Lerp the field of view to mimic zooming in
-        float zoomT = 1.0f - _sizePercentage;
-        float newFOV = Mathf.Lerp(m_startFOV, m_minFOV, zoomT);
-        m_freeLookCam.m_Lens.FieldOfView = newFOV;
+        if (this.enabled)
+        {
+            // Lerp the field of view to mimic zooming in
+            float zoomT = 1.0f - _sizePercentage;
+            float newFOV = Mathf.Lerp(m_startFOV, m_minFOV, zoomT);
+            m_freeLookCam.m_Lens.FieldOfView = newFOV;
+        }
     }
 
 

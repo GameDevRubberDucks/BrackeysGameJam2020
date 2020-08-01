@@ -3,7 +3,7 @@
 public class Player_Movement : MonoBehaviour
 {
     //--- Public Variables ---//
-    public Camera m_mainCam;
+    public Transform m_mainCam;
     public float m_movementSpeed;
 
 
@@ -46,7 +46,7 @@ public class Player_Movement : MonoBehaviour
         Vector3 newVel = new Vector3(xSpeed, 0.0f, zSpeed);
 
         // Transform the velocity so it is relative to the camera
-        Vector3 transformedVel = m_mainCam.transform.TransformDirection(newVel);
+        Vector3 transformedVel = m_mainCam.TransformDirection(newVel);
 
         // Use the pre-existing y-velocity to ensure that gravity is still applied
         transformedVel.y = m_rb.velocity.y;

@@ -25,7 +25,7 @@ public class Camera_FreeLookController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             m_freeLookCam.m_XAxis.m_InputAxisName = m_xAxisName;
-            m_freeLookCam.m_YAxis.m_InputAxisName = m_yAxisName;
+            //m_freeLookCam.m_YAxis.m_InputAxisName = m_yAxisName;
         }
         else
         {
