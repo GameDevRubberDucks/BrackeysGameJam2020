@@ -901,6 +901,7 @@ GameObject:
   - component: {fileID: 1420282834}
   - component: {fileID: 1420282835}
   - component: {fileID: 1420282836}
+  - component: {fileID: 1420282837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1040,6 +1041,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sizeChangeMaxDuration: 10
   m_minSize: 0.1
+--- !u!114 &1420282837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420282828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9375efae8aca6b54195d093a345444c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_freeLookCam: {fileID: 2065122260}
+  m_minFOV: 15
+  m_maxZoomOutFOV: 80
 --- !u!1 &1521490481
 GameObject:
   m_ObjectHideFlags: 0

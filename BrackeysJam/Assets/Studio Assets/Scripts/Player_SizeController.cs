@@ -79,8 +79,9 @@ public class Player_SizeController : MonoBehaviour
         }
     }
 
-    private float PercentOfMaxSize
+    public float PercentOfMaxSize
     {
+        get { return m_percentOfMaxSize; }
         set
         {
             m_percentOfMaxSize = value;

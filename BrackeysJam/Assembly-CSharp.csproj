@@ -61,6 +61,7 @@
     <Compile Include="Assets\Studio Assets\Scripts\Player_Respawner.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_SizeController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\UI_PlayerSize.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Player_CameraZoom.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />
