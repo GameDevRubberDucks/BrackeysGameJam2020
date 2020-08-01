@@ -14,6 +14,7 @@ public class Player_SizeController : MonoBehaviour
     private Player_Respawner m_respawner;
     private float m_maxSize;
     private float m_sizeChangeTimeSoFar;
+    private float m_percentOfMaxSize;
 
 
 
@@ -24,12 +25,7 @@ public class Player_SizeController : MonoBehaviour
         m_respawner = GetComponent<Player_Respawner>();
         m_maxSize = transform.localScale.x;
         m_sizeChangeTimeSoFar = 0.0f;
-    }
-
-    private void Update()
-    {
-        // Reduce the size over time
-        ReduceSize();
+        PercentOfMaxSize = 1.0f;
     }
 
 
@@ -42,10 +38,12 @@ public class Player_SizeController : MonoBehaviour
         transform.localScale = Vector3.one * m_maxSize;
     }
 
-    public void ReduceSize()
+    public void ReduceSize(float _timeIncrement)
     {
         // Increase the timer
-        m_sizeChangeTimeSoFar += Time.deltaTime;
+        // The time increment param means we can reduce size via Time.fixedDeltaTime if needed (movement is physics based)
+        // Otherwise, it should just be Time.deltaTime
+        m_sizeChangeTimeSoFar += _timeIncrement;
 
         // If the time is up, we should respawn
         // Otherwise, we should adjust the scale instead
@@ -62,9 +60,8 @@ public class Player_SizeController : MonoBehaviour
             // Apply the size to the transform
             transform.localScale = Vector3.one * newSize;
 
-            // Trigger the event
-            float percentOfMaxSize = 1.0f - sizeChangeT;
-            OnSizeUpdated.Invoke(percentOfMaxSize);
+            // Recalculate the percentage of the maximum size
+            PercentOfMaxSize = 1.0f - sizeChangeT;
         }
     }
 
@@ -79,6 +76,15 @@ public class Player_SizeController : MonoBehaviour
                 m_onSizeUpdated = new UnityEvent<float>();
 
             return m_onSizeUpdated;
+        }
+    }
+
+    private float PercentOfMaxSize
+    {
+        set
+        {
+            m_percentOfMaxSize = value;
+            OnSizeUpdated.Invoke(m_percentOfMaxSize);
         }
     }
 }
