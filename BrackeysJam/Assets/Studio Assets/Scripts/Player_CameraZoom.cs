@@ -5,15 +5,17 @@ public class Player_CameraZoom : MonoBehaviour
 {
     //--- Public Variables ---//
     public CinemachineFreeLook m_freeLookCam;
-    public float m_minFOV;
-    public float m_maxZoomOutFOV;
+    //public float m_minFOV;
+    //public float m_maxZoomOutFOV;
+    public float m_midRigMinRadius;
+    public float m_midRigMinHeight;
 
 
 
     //--- Private Variables ---//
     private Player_SizeController m_sizeController;
-    private float m_startFOV;
-    private bool m_useMaxZoomOut;
+    private float m_midRigStartRadius;
+    private float m_midRigStartHeight;
 
 
 
@@ -22,18 +24,12 @@ public class Player_CameraZoom : MonoBehaviour
     {
         // Init the private variables
         m_sizeController = GetComponent<Player_SizeController>();
-        m_startFOV = m_freeLookCam.m_Lens.FieldOfView;
-        UseMaxZoomOut = false;
+        var midRigOrbit = m_freeLookCam.m_Orbits[1];
+        m_midRigStartRadius = midRigOrbit.m_Radius;
+        m_midRigStartHeight = midRigOrbit.m_Height;
 
         // Register for necessary events
         m_sizeController.OnSizeUpdated.AddListener(UpdateZoom);
-    }
-
-    private void Update()
-    {
-        // Toggle the max zoom out by pressing space
-        if (Input.GetKeyDown(KeyCode.Space))
-            UseMaxZoomOut = !UseMaxZoomOut;            
     }
 
 
@@ -43,39 +39,16 @@ public class Player_CameraZoom : MonoBehaviour
     {
         if (this.enabled)
         {
-            // Lerp the field of view to mimic zooming in
+            // Close the camera orbits in around the player to zoom in
             float zoomT = 1.0f - _sizePercentage;
-            float newFOV = Mathf.Lerp(m_startFOV, m_minFOV, zoomT);
-            m_freeLookCam.m_Lens.FieldOfView = newFOV;
-        }
-    }
+            float newMidRigRadius = Mathf.Lerp(m_midRigStartRadius, m_midRigMinRadius, zoomT);
+            float newMidRigHeight = Mathf.Lerp(m_midRigStartHeight, m_midRigMinHeight, zoomT);
 
-
-    
-    //--- Properties ---//
-    public bool UseMaxZoomOut
-    {
-        get => m_useMaxZoomOut;
-        set
-        {
-            m_useMaxZoomOut = value;
-
-            if (m_useMaxZoomOut == true)
-            {
-                // Unregister from the player size change event
-                m_sizeController.OnSizeUpdated.RemoveListener(this.UpdateZoom);
-
-                // Update the FOV to be the zoomed out version
-                m_freeLookCam.m_Lens.FieldOfView = m_maxZoomOutFOV;
-            }
-            else
-            {
-                // Register for the player size change event
-                m_sizeController.OnSizeUpdated.AddListener(this.UpdateZoom);
-
-                // Trigger the update manually here
-                UpdateZoom(m_sizeController.PercentOfMaxSize);
-            }
+            // Apply the updated orbit values to the camera
+            var updatedOrbit = new CinemachineFreeLook.Orbit();
+            updatedOrbit.m_Height = newMidRigHeight;
+            updatedOrbit.m_Radius = newMidRigRadius;
+            m_freeLookCam.m_Orbits[1] = updatedOrbit;
         }
     }
 }
