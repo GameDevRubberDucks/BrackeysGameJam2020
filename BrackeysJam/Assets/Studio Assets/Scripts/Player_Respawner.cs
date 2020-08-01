@@ -5,6 +5,7 @@ public class Player_Respawner : MonoBehaviour
     //--- Private Variables ---//
     private Respawn_Zone m_currentRespawnZone;
     private Player_SizeController m_sizeController;
+    private Rigidbody m_rb;
 
 
 
@@ -14,6 +15,7 @@ public class Player_Respawner : MonoBehaviour
         // Init the private variables
         m_currentRespawnZone = null;
         m_sizeController = GetComponent<Player_SizeController>();
+        m_rb = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,6 +47,10 @@ public class Player_Respawner : MonoBehaviour
         // Move to the respawn point's position and orientation
         transform.position = m_currentRespawnZone.m_respawnPoint.position;
         transform.rotation = m_currentRespawnZone.m_respawnPoint.rotation;
+
+        // Zero out the velocity
+        m_rb.velocity = Vector3.zero;
+        m_rb.angularVelocity = Vector3.zero;
 
         // Reset the player size
         m_sizeController.ResetSize();

@@ -833,7 +833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainCam: {fileID: 2097688704410556228}
-  m_movementSpeed: 10
+  m_moveForceStr: 500
+  m_stopWhenNoInput: 0
 --- !u!114 &2097688704049309978
 MonoBehaviour:
   m_ObjectHideFlags: 0

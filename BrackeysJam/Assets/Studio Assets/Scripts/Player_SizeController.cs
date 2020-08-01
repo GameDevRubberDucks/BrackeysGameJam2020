@@ -31,7 +31,7 @@ public class Player_SizeController : MonoBehaviour
     private void Update()
     {
         // Shrink over time
-        ReduceSize(Time.deltaTime);
+        ReduceSize();
     }
 
 
@@ -44,12 +44,10 @@ public class Player_SizeController : MonoBehaviour
         transform.localScale = Vector3.one * m_maxSize;
     }
 
-    public void ReduceSize(float _timeIncrement)
+    public void ReduceSize()
     {
         // Increase the timer
-        // The time increment param means we can reduce size via Time.fixedDeltaTime if needed (movement is physics based)
-        // Otherwise, it should just be Time.deltaTime
-        m_sizeChangeTimeSoFar += _timeIncrement;
+        m_sizeChangeTimeSoFar += Time.deltaTime;
 
         // If the time is up, we should respawn
         // Otherwise, we should adjust the scale instead
