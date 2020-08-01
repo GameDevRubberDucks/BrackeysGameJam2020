@@ -57,13 +57,12 @@
   <ItemGroup>
     <Compile Include="Assets\Studio Assets\Scripts\Player_Movement.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Camera_FreeLookController.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Respawn_Zone.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Player_Respawner.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />
      <None Include="Assets\Studio Assets\Audio\PLACEHOLDER.txt" />
-     <None Include="Assets\Studio Assets\Scripts\PLACEHOLDER.txt" />
-     <None Include="Assets\Studio Assets\Prefabs\PLACEHOLDER.txt" />
-     <None Include="Assets\Studio Assets\Materials\PLACEHOLDER.txt" />
      <None Include="Assets\Studio Assets\Animations\PLACEHOLDER.txt" />
      <None Include="Assets\Studio Assets\Shaders\PLACEHOLDER.txt" />
      <None Include="Assets\Studio Assets\Meshes\PLACEHOLDER.txt" />
