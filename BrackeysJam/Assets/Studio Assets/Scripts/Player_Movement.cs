@@ -4,12 +4,12 @@ public class Player_Movement : MonoBehaviour
 {
     //--- Public Variables ---//
     public Transform m_mainCam;
-    public float m_movementSpeed;
+    public float m_moveForceStr;
+    public bool m_stopWhenNoInput;
 
 
 
     //--- Private Variables ---//
-    private Player_SizeController m_sizeController;
     private Rigidbody m_rb;
 
 
@@ -18,7 +18,6 @@ public class Player_Movement : MonoBehaviour
     private void Awake()
     {
         // Init the private variables
-        m_sizeController = GetComponent<Player_SizeController>();
         m_rb = GetComponent<Rigidbody>();
     }
 
@@ -29,10 +28,11 @@ public class Player_Movement : MonoBehaviour
         float vAxis = Input.GetAxis("Vertical");
 
         // If there is no input, we should stop all velocity except for gravity
-        if (hAxis == 0.0f && vAxis == 0.0f)
+        if (m_stopWhenNoInput && (hAxis == 0.0f && vAxis == 0.0f))
         {
             var currentVelY = m_rb.velocity.y;
             m_rb.velocity = new Vector3(0.0f, currentVelY, 0.0f);
+            m_rb.angularVelocity = Vector3.zero;
             return;
         }
 
@@ -40,21 +40,15 @@ public class Player_Movement : MonoBehaviour
         Vector2 inputVector = new Vector2(hAxis, vAxis);
         inputVector.Normalize();
 
-        // Determine the new velocity vector
-        float xSpeed = inputVector.x * m_movementSpeed;
-        float zSpeed = inputVector.y * m_movementSpeed;
-        Vector3 newVel = new Vector3(xSpeed, 0.0f, zSpeed);
+        // Determine the new force vector
+        float xSpeed = inputVector.x * m_moveForceStr * Time.deltaTime;
+        float zSpeed = inputVector.y * m_moveForceStr * Time.deltaTime;
+        Vector3 newForce = new Vector3(xSpeed, 0.0f, zSpeed);
 
-        // Transform the velocity so it is relative to the camera
-        Vector3 transformedVel = m_mainCam.TransformDirection(newVel);
-
-        // Use the pre-existing y-velocity to ensure that gravity is still applied
-        transformedVel.y = m_rb.velocity.y;
+        // Transform the force so it is relative to the camera
+        Vector3 transformedForce = m_mainCam.TransformDirection(newForce);
 
         // Move the ball
-        m_rb.velocity = transformedVel;
-
-        // Since we are moving the ball, it should shrink in size
-        m_sizeController.ReduceSize(Time.deltaTime);
+        m_rb.AddForce(transformedForce);
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="Assets\Studio Assets\Scripts\UI_PlayerSize.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Camera_FreeLookController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_CameraZoom.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Player_TrailController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />
