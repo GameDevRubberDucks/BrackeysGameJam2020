@@ -7,6 +7,8 @@ public class Player_TrailController : MonoBehaviour
     public LineRenderer m_line;
     public float m_heightBias;
     public float m_posAddTimer;
+    public float m_groundRaycastHeight;
+    public LayerMask m_groundRayMask;
 
 
 
@@ -61,7 +63,7 @@ public class Player_TrailController : MonoBehaviour
         m_line.SetPosition(m_line.positionCount - 1, newPos);
 
         // Update the width to match the size of the player
-        float playerSize = m_sizeController.GetCurrentSize();
+        float playerSize = (IsOnGround()) ? m_sizeController.GetCurrentSize() : 0.0f;
         float lifetimePercentage = 1.0f - m_sizeController.PercentOfMaxSize;
         var newWidthCurve = m_line.widthCurve;
         newWidthCurve.AddKey(lifetimePercentage, playerSize);
@@ -69,5 +71,14 @@ public class Player_TrailController : MonoBehaviour
 
         // Reset the timer
         m_timeSinceLastPosAdd = 0.0f;
+    }
+
+
+
+    //--- Utility Methods ---//
+    private bool IsOnGround()
+    {
+        // Raycast down to check if the player is on the ground
+        return Physics.Raycast(transform.position, Vector3.down, m_groundRaycastHeight, m_groundRayMask);
     }
 }
