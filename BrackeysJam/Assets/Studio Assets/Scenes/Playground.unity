@@ -7032,7 +7032,7 @@ MonoBehaviour:
   m_groundRayMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_groundOffset: 0.1
+  m_groundOffset: 0.001
 --- !u!43 &1006388536
 Mesh:
   m_ObjectHideFlags: 0
