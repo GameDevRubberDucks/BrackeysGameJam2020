@@ -37,7 +37,7 @@ public class Platform_Controller : MonoBehaviour
     void Update()
     {
         //Version 2
-        if(transform.position != currentTarget)
+        if(transform.parent.position != currentTarget)
         {
             MovePlatform();
         }
@@ -49,12 +49,12 @@ public class Platform_Controller : MonoBehaviour
 
     private void MovePlatform()
     {
-        Vector3 heading = currentTarget - transform.position;
-        transform.position += (heading / heading.magnitude) * speed * Time.deltaTime;
+        Vector3 heading = currentTarget - transform.parent.position;
+        transform.parent.position += (heading / heading.magnitude) * speed * Time.deltaTime;
 
         if(heading.magnitude < tolerance)
         {
-            transform.position = currentTarget;
+            transform.parent.position = currentTarget;
             delayTimer = Time.time;
         }
     }
@@ -75,4 +75,22 @@ public class Platform_Controller : MonoBehaviour
         }
         currentTarget = pointPositions[numPoint];
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(this.transform.parent);
+        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.transform.SetParent(null);
+        }
+    }
+
 }
