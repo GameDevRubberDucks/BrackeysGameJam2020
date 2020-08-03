@@ -151,6 +151,8 @@ public class Player_SizeController : MonoBehaviour
         transform.localScale = Vector3.one * m_currentSize;
     }
 
+
+
     //--- Properties ---//
     public UnityEvent<float> OnSizeUpdated 
     {
