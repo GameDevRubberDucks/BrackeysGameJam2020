@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Button_Controller : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class Button_Controller : MonoBehaviour
     public bool isPressed;
     public bool isBeingPressed;
     public float lerpSpeed = 1.0f;
+    public UnityEvent onButtonPressed;
 
     //--- Private Variables ---//
     private Vector3 upPosition;
     private Vector3 pressedPosition;
     private float lerp = 0.0f;
+    private bool canFireEvent = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,16 +55,34 @@ public class Button_Controller : MonoBehaviour
             {
                 isPressed = true;
                 isBeingPressed = true;
+
+                if (canFireEvent)
+                {
+                    onButtonPressed.Invoke();
+                    canFireEvent = false;
+                }
             }
             else if (playerSize == Player_SizeState.Medium && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium))
             {
                 isPressed = true;
                 isBeingPressed = true;
+
+                if (canFireEvent)
+                {
+                    onButtonPressed.Invoke();
+                    canFireEvent = false;
+                }
             }
             else if (playerSize == Player_SizeState.Large && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium || buttonType == Player_SizeState.Large))
             {
                 isPressed = true;
                 isBeingPressed = true;
+
+                if (canFireEvent)
+                {
+                    onButtonPressed.Invoke();
+                    canFireEvent = false;
+                }
             }
         }
     }
@@ -71,6 +92,7 @@ public class Button_Controller : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             isBeingPressed = false;
+            canFireEvent = true;
         }
     }
 
