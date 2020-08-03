@@ -6,17 +6,11 @@ public class Button_Controller : MonoBehaviour
 {
 
     //--- Setup Variable ---//
-    
-    //--- Public Variables ---//
-    public enum Type
-    {
-        Small,
-        Medium,
-        Large
-    }
-    public Type buttonType;
 
+    //--- Public Variables ---//
+    public Player_SizeState buttonType;
     public bool isPressed;
+    public bool isBeingPressed;
     public float lerpSpeed = 1.0f;
 
     //--- Private Variables ---//
@@ -26,7 +20,7 @@ public class Button_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonType = Type.Small;
+        //buttonType = Player_SizeState.Large;
         upPosition = transform.position;
         pressedPosition = upPosition + new Vector3(0.0f, -0.5f, 0.0f);
     }
@@ -34,12 +28,12 @@ public class Button_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPressed && lerp < 1.0f)
+        if(isBeingPressed && lerp < 1.0f)
         {
             lerp += lerpSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(upPosition, pressedPosition, lerp);
         }
-        else if (!isPressed && lerp > 0.0f)
+        else if (!isBeingPressed && lerp > 0.0f)
         {
             lerp -= lerpSpeed * Time.deltaTime;
             transform.position = Vector3.Lerp(upPosition, pressedPosition, lerp);
@@ -49,14 +43,26 @@ public class Button_Controller : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Player")
+        Player_SizeState playerSize = col.gameObject.GetComponent<Player_SizeController>().GetCurrentSizeState();
+        if (col.gameObject.tag == "Player")
         {
             //Check player size, if equal to enum then
-            
-            //if(col.gameObject.GetComponent<Player_SizeController>().GetCurrentSizeState() == buttonType)
-            //{
-            //    isPressed = true;
-            //}
+
+            if(playerSize == Player_SizeState.Small && buttonType == Player_SizeState.Small)
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
+            else if (playerSize == Player_SizeState.Medium && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium))
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
+            else 
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
         }
     }
 
@@ -64,7 +70,7 @@ public class Button_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            isPressed = false;
+            isBeingPressed = false;
         }
     }
 

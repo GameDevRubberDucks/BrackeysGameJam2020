@@ -13253,6 +13253,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 182608402879763913, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 182608402879763913, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 561656279346269061, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.18910754
@@ -13271,10 +13279,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2097688704049309981, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_sizeChangeMaxDuration
-      value: 1000
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2097688704161828593, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097688704161828593, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2097688704410556228, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
@@ -15054,6 +15066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonType: 0
   isPressed: 0
+  isBeingPressed: 0
   lerpSpeed: 10
 --- !u!65 &1877658946
 BoxCollider:
