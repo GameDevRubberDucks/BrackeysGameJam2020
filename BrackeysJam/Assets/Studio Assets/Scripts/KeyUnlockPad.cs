@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class KeyUnlockPad : MonoBehaviour
 {
@@ -8,13 +9,13 @@ public class KeyUnlockPad : MonoBehaviour
     public Transform door;
 
     //private var
-    private bool doorUnlocked;
-    private Item_behavior key;
+    private Vector3 initPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        doorUnlocked = false;
+        //store the inital position of the object
+        initPosition = door.position;
     }
 
     // Update is called once per frame
@@ -43,5 +44,12 @@ public class KeyUnlockPad : MonoBehaviour
         }
     }
 
+
+    //methods
+    public void ObjectReset()
+    {
+        //reset the door to its initial position
+        door.position = initPosition;
+    }
 }
 
