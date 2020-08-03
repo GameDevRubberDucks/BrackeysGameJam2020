@@ -5,7 +5,7 @@ public class Player_Respawner : MonoBehaviour
     //--- Private Variables ---//
     private Respawn_Zone m_currentRespawnZone;
     private Player_SizeController m_sizeController;
-    private Player_TrailController m_trailController;
+    private Player_TrailParticles m_trailController;
     private Rigidbody m_rb;
 
 
@@ -16,7 +16,7 @@ public class Player_Respawner : MonoBehaviour
         // Init the private variables
         m_currentRespawnZone = null;
         m_sizeController = GetComponent<Player_SizeController>();
-        m_trailController = GetComponent<Player_TrailController>();
+        m_trailController = GetComponent<Player_TrailParticles>();
         m_rb = GetComponent<Rigidbody>();
     }
 
@@ -56,7 +56,7 @@ public class Player_Respawner : MonoBehaviour
 
         // Reset the other player attributes
         m_sizeController.ResetSize();
-        m_trailController.ResetLine();
+        m_trailController.ResetTrail();
     }
 
 
