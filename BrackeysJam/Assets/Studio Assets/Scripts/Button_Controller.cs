@@ -52,11 +52,22 @@ public class Button_Controller : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             //Check player size, if equal to enum then
-            
-            //if(col.gameObject.GetComponent<Player_SizeController>().GetCurrentSizeState() == buttonType)
-            //{
-            //    isPressed = true;
-            //}
+
+            if(playerSize == Player_SizeState.Small && buttonType == Player_SizeState.Small)
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
+            else if (playerSize == Player_SizeState.Medium && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium))
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
+            else if (playerSize == Player_SizeState.Large && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium || buttonType == Player_SizeState.Large))
+            {
+                isPressed = true;
+                isBeingPressed = true;
+            }
         }
     }
 
