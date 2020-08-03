@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ public class Item_behavior : MonoBehaviour
     public float itemDropPoint;
     public GameObject model;
     public bool isHolding;
+    public int keyNumber;
 
     //private vars
     private Vector3 currentPos;
@@ -25,19 +28,18 @@ public class Item_behavior : MonoBehaviour
         playerSize = GameObject.FindObjectOfType<Player_SizeController>();
         isHolding = false;
 
+
     }
     private void Update()
     {
         if(playerSize.PercentOfMaxSize <= itemDropPoint && isHolding)
         {
-            currentPos = playerTF.position;
             dropItem();
         }
     }
 
     public void hideitem()
     {
-        gameObject.GetComponent<SphereCollider>().enabled = false;
         model.SetActive(false);
     }
 
@@ -45,15 +47,16 @@ public class Item_behavior : MonoBehaviour
     public void rewind()
     {
         transform.position = initPos;
-        gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 
     //drop the item at the players current position
     public void dropItem()
     {
         model.SetActive(true);
+        currentPos = playerTF.position;
         transform.position = currentPos;
         isHolding = false;
+
     }
 
     //corrent position setter

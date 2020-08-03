@@ -9,14 +9,14 @@ public class Player_ItemInteractions : MonoBehaviour
     //is true is holding key item.
     public bool holdItem;
     public Image itemSlot;
+    public Item_behavior itemOnHold;
 
-    //private variables
-    private Item_behavior itemOnHold;
+    //private vars
+    private Collider TempItemHolder;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -34,13 +34,14 @@ public class Player_ItemInteractions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //check if coliding with item
-        if (other.gameObject.tag == "Item")
+        //check if coliding with item, and if it is a item that was just droped 
+        if (other.gameObject.tag == "Item" && TempItemHolder != other)
         {
             //player is now holding a key
             holdItem = true;
             itemOnHold = other.gameObject.GetComponent<Item_behavior>();
-
+            //hold the reference to the current item
+            TempItemHolder = other;
 
             //disable the item prefab
             itemOnHold.hideitem();
