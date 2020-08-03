@@ -61,13 +61,14 @@
     <Compile Include="Assets\Studio Assets\Scripts\PowerBox_Communicator.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Respawn_Zone.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_Movement.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Platform_Controller.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_SizeController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Door_Controller.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\UI_PlayerSize.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Bouncer_Collision.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Camera_FreeLookController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_CameraZoom.cs" />
-    <Compile Include="Assets\Studio Assets\Scripts\Platform_Controller.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Button_Controller.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Studio Assets\Textures\PLACEHOLDER.txt" />
