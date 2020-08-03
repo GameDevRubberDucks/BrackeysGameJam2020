@@ -58,7 +58,7 @@ public class Button_Controller : MonoBehaviour
                 isPressed = true;
                 isBeingPressed = true;
             }
-            else 
+            else if (playerSize == Player_SizeState.Large && (buttonType == Player_SizeState.Small || buttonType == Player_SizeState.Medium || buttonType == Player_SizeState.Large))
             {
                 isPressed = true;
                 isBeingPressed = true;
