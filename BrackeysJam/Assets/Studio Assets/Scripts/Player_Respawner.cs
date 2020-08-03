@@ -27,13 +27,6 @@ public class Player_Respawner : MonoBehaviour
             RegisterNewRespawnPoint(other.gameObject);
     }
 
-    private void Update()
-    {
-        // Can quickly respawn by pressing the appropriate key
-        if (Input.GetKeyDown(KeyCode.R))
-            this.Respawn();
-    }
-
 
 
     //--- Methods ---//

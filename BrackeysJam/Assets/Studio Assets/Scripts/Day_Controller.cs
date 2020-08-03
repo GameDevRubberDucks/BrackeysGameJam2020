@@ -10,6 +10,7 @@ public class Day_Controller : MonoBehaviour
 
     //--- Private Variables ---//
     private UnityEvent<float> m_onDayTimeUpdated;
+    private UnityEvent m_onDayReset;
     private Player_Respawner m_respawner;
     private float m_dayTimeSoFar;
 
@@ -40,6 +41,10 @@ public class Day_Controller : MonoBehaviour
             // Send the event with the percentage of the day completed
             OnDayTimeUpdated.Invoke(m_dayTimeSoFar / m_dayLength);
         }
+
+        // Can quickly reset the day by pressing the appropriate key
+        if (Input.GetKeyDown(KeyCode.R))
+            ResetDay();
     }
 
 
@@ -51,6 +56,9 @@ public class Day_Controller : MonoBehaviour
         m_dayTimeSoFar = 0.0f;
         OnDayTimeUpdated.Invoke(0.0f);
         m_respawner.Respawn();
+
+        // Broadcast to everything in the scene that the day has been reset
+        m_onDayReset.Invoke();
     }
 
 
@@ -64,6 +72,17 @@ public class Day_Controller : MonoBehaviour
                 m_onDayTimeUpdated = new UnityEvent<float>();
 
             return m_onDayTimeUpdated;
+        }
+    }
+
+    public UnityEvent OnDayReset
+    {
+        get
+        {
+            if (m_onDayReset == null)
+                m_onDayReset = new UnityEvent();
+
+            return m_onDayReset;
         }
     }
 }
