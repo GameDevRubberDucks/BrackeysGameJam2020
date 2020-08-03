@@ -11397,6 +11397,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.9819564
       objectReference: {fileID: 0}
+    - target: {fileID: 692548652530807587, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18910754
+      objectReference: {fileID: 0}
+    - target: {fileID: 692548652530807587, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9819564
+      objectReference: {fileID: 0}
     - target: {fileID: 2097688704161828593, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11416,6 +11424,10 @@ PrefabInstance:
     - target: {fileID: 2097688704410556228, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097688704410556228, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2097688704410556229, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: near clip plane
@@ -11464,6 +11476,14 @@ PrefabInstance:
     - target: {fileID: 2822808252581565083, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758596429515960255, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18910754
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758596429515960255, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9819564
       objectReference: {fileID: 0}
     - target: {fileID: 9171437811470308049, guid: 2f44c014ca9793347b7c8e4c89c3bcf0, type: 3}
       propertyPath: m_Name
