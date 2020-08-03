@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PowerBox_Communicator: MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class PowerBox_Communicator: MonoBehaviour
     private PowerBox_Controller[] powerBoxs;
     //--- Public Variables ---//
     public bool isPairing = false;
-    public bool isActive =false;
+    public bool isActive = false;
+    public UnityEvent onPowerBoxesConnected;
+    //--- Private Variables ----//
+    private bool canFireEvent = false;
 
     
     
@@ -28,16 +32,24 @@ public class PowerBox_Communicator: MonoBehaviour
         {
             isActive = true;
             isPairing = false;
+
+            if (canFireEvent)
+            {
+                onPowerBoxesConnected.Invoke();
+                canFireEvent = false;
+            }
         }
         else if (activeCount > 0 )
         {
             isActive = false;
             isPairing = true;
+            canFireEvent = true;
         }
         else
         {
             isActive = false;
             isPairing = false;
+            canFireEvent = true;
         }
     }
 
