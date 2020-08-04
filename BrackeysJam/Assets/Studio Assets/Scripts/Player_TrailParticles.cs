@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Player_TrailParticles : MonoBehaviour
 {
     //--- Public Variables ---//
+    [Header("Renderables")]
     public ParticleSystem m_particles;
+    public Material m_baseMat;
+    public Material m_electrifiedMat;
+
+    [Header("Raycast Spawning")]
     public LayerMask m_groundRayMask;
     public float m_groundOffset;
+
+    public bool useElectric;
 
 
 
@@ -35,6 +41,15 @@ public class Player_TrailParticles : MonoBehaviour
             emitParams.rotation3D = Quaternion.LookRotation(-hit.normal).eulerAngles;
             emitParams.startSize = m_sizeController.GetCurrentRadius();
             m_particles.Emit(emitParams, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            var rend = m_particles.GetComponent<ParticleSystemRenderer>();
+
+            useElectric = !useElectric;
+
+            rend.material = (useElectric) ? m_electrifiedMat : m_baseMat;
         }
     }
 
