@@ -42,6 +42,7 @@ public class Camera_Timer : MonoBehaviour
 
             rb_Player.isKinematic = true;
         }
+        
     }
 
     private void StopCameraShot()
