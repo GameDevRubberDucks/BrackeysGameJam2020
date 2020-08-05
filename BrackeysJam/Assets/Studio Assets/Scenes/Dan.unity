@@ -219,6 +219,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016436736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8000451039868633265, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
+  m_PrefabInstance: {fileID: 8000451040337407566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b474533a00f674f9301b4f75368bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1193168188
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +329,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1016436736}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Heatpad_Controller, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetHeatpad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265715000545622784, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6265715000545622785, guid: efc800b163ee4d049b10ce560518c28a, type: 3}
       propertyPath: m_Name
       value: Button
@@ -758,13 +797,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8000451039868633265, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
+      propertyPath: m_cooldownDuration
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8000451039868633268, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
       propertyPath: m_Name
       value: Heatpad
       objectReference: {fileID: 0}
     - target: {fileID: 8000451039868633269, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: -2.17
       objectReference: {fileID: 0}
     - target: {fileID: 8000451039868633269, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -772,7 +815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000451039868633269, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 8000451039868633269, guid: 038fb77ece99e874794f23ba9a1258dc, type: 3}
       propertyPath: m_LocalRotation.x
