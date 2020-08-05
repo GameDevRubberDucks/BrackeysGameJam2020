@@ -51,4 +51,10 @@ public class Player_ItemInteractions : MonoBehaviour
         }
     }
 
+
+    //method
+    public void ResetObject()
+    {
+        TempItemHolder = new Collider();
+    }
 }

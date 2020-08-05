@@ -44,9 +44,11 @@ public class Item_behavior : MonoBehaviour
     }
 
     //reset object location and active state
-    public void rewind()
+    public void ResetObject()
     {
+        model.SetActive(true);
         transform.position = initPos;
+        isHolding = false;
     }
 
     //drop the item at the players current position
