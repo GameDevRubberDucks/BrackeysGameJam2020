@@ -23,7 +23,6 @@ public class Bouncer_Collision : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("SPRING");
             collision.rigidbody.AddForce(this.transform.up * bouncerForce, ForceMode.Force);
         }
     }

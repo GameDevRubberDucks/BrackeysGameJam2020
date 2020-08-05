@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snowball
+  m_Shader: {fileID: -6465566751694194690, guid: 92e82a7e505addf44a9618eaec4055df, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_139B49D0: 0.5
+    - Vector1_2130F0C6: 5
+    - Vector1_35C09E10: 0
+    - Vector1_BD4843E7: 2
+    - Vector1_D0AD8BA7: -0.05
+    m_Colors:
+    - Color_3AF6E50A: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - Vector2_344035F9: {r: 33.28, g: 5.13, b: 0, a: 0}
+    - Vector2_CFF76A1E: {r: 0, g: 1.08, b: 0, a: 0}
+    - Vector2_E33611C5: {r: 0.5, g: 0.78, b: 0, a: 0}
+  m_BuildTextureStacks: []
