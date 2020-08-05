@@ -10,6 +10,8 @@ public class Door_Controller : MonoBehaviour
     //--- Public Variables ---//
     public bool isOpen = false;
     public Vector3 desiredPosition;
+    public float doorOpeningSpeed = 0.5f;
+    public float doorClosingSpeed = 0.7f;
 
     //--- Private Variables ---//
     private Vector3 newPosition;
@@ -27,14 +29,14 @@ public class Door_Controller : MonoBehaviour
     {
         if(controller.isActive && lerpStep < 1.0f)
         {
-            lerpStep += 0.5f * Time.deltaTime;
+            lerpStep += doorOpeningSpeed * Time.deltaTime;
             newPosition = Vector3.Lerp(startPosition,desiredPosition, lerpStep);
             this.transform.position = newPosition;
         }
         else if(!controller.isActive && lerpStep > 0.0f)
         {
 
-            lerpStep -= 0.5f * Time.deltaTime;
+            lerpStep -= doorClosingSpeed * Time.deltaTime;
             newPosition = Vector3.Lerp(startPosition, desiredPosition, lerpStep);
             this.transform.position = newPosition;
         }

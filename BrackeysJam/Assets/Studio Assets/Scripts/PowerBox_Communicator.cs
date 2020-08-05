@@ -12,6 +12,7 @@ public class PowerBox_Communicator: MonoBehaviour
     public bool isPairing = false;
     public bool isActive = false;
     public UnityEvent onPowerBoxesConnected;
+
     //--- Private Variables ----//
     private bool canFireEvent = false;
 
@@ -21,6 +22,7 @@ public class PowerBox_Communicator: MonoBehaviour
     void Start()
     {
         powerBoxs = GetComponentsInChildren<PowerBox_Controller>();
+        FindObjectOfType<Day_Controller>().OnDayReset.AddListener(this.ResetPowerBoxes);
     }
 
     // Update is called once per frame
@@ -65,5 +67,17 @@ public class PowerBox_Communicator: MonoBehaviour
             }
         }
         return activeCounter;
+    }
+
+    public void ResetPowerBoxes()
+    {
+        isActive = false;
+        isPairing = false;
+        canFireEvent = true;
+        for (int x = 0; x < powerBoxs.Length; x++)
+        {
+            powerBoxs[x].m_isActive = false;
+            powerBoxs[x].m_isPairing = false;
+        }
     }
 }
