@@ -19,7 +19,7 @@ public class Platform_Controller : MonoBehaviour
 
     //--- Private Variables ---//
     private Vector3 currentTarget;
-    [SerializeField] private int numPoint = 0;
+    private int numPoint = 0;
     private float delayTimer;
     private bool reversePositionsDirection = false;
 
@@ -38,7 +38,7 @@ public class Platform_Controller : MonoBehaviour
     void Update()
     {
         //Version 2
-        if (transform.parent.position != currentTarget)
+        if (transform.parent.localPosition != currentTarget)
         {
             MovePlatform();
         }
@@ -50,12 +50,12 @@ public class Platform_Controller : MonoBehaviour
 
     private void MovePlatform()
     {
-        Vector3 heading = currentTarget - transform.parent.position;
-        transform.parent.position += (heading / heading.magnitude) * speed * Time.deltaTime;
+        Vector3 heading = currentTarget - transform.parent.localPosition;
+        transform.parent.localPosition += (heading / heading.magnitude) * speed * Time.deltaTime;
 
         if (heading.magnitude < tolerance)
         {
-            transform.parent.position = currentTarget;
+            transform.parent.localPosition = currentTarget;
             delayTimer = Time.time;
         }
     }

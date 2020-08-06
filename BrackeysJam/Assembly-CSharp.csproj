@@ -85,6 +85,7 @@
     <Compile Include="Assets\Studio Assets\Scripts\Camera_FreeLookController.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Player_CameraZoom.cs" />
     <Compile Include="Assets\Studio Assets\Scripts\Camera_Timer.cs" />
+    <Compile Include="Assets\Studio Assets\Scripts\Object_Rotate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
