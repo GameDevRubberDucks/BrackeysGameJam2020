@@ -24,7 +24,7 @@ public class Button_Controller : MonoBehaviour
     void Start()
     {
         //buttonType = Player_SizeState.Large;
-        upPosition = transform.position;
+        upPosition = transform.localPosition;
         pressedPosition = upPosition + new Vector3(0.0f, -0.5f, 0.0f);
     }
 
@@ -34,12 +34,12 @@ public class Button_Controller : MonoBehaviour
         if(isBeingPressed && lerp < 1.0f)
         {
             lerp += lerpSpeed * Time.deltaTime;
-            transform.position = Vector3.Lerp(upPosition, pressedPosition, lerp);
+            transform.localPosition = Vector3.Lerp(upPosition, pressedPosition, lerp);
         }
         else if (!isBeingPressed && lerp > 0.0f)
         {
             lerp -= lerpSpeed * Time.deltaTime;
-            transform.position = Vector3.Lerp(upPosition, pressedPosition, lerp);
+            transform.localPosition = Vector3.Lerp(upPosition, pressedPosition, lerp);
         }
     }
 
