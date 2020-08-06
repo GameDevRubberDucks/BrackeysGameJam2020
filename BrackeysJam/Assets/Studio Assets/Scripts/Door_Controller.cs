@@ -19,7 +19,7 @@ public class Door_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPosition = this.transform.position;
+        startPosition = this.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -29,14 +29,14 @@ public class Door_Controller : MonoBehaviour
         {
             lerpStep += 0.5f * Time.deltaTime;
             newPosition = Vector3.Lerp(startPosition,desiredPosition, lerpStep);
-            this.transform.position = newPosition;
+            this.transform.localPosition = newPosition;
         }
         else if(!controller.isActive && lerpStep > 0.0f)
         {
 
             lerpStep -= 0.5f * Time.deltaTime;
             newPosition = Vector3.Lerp(startPosition, desiredPosition, lerpStep);
-            this.transform.position = newPosition;
+            this.transform.localPosition = newPosition;
         }
     }
 }
